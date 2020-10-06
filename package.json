@@ -1,0 +1,38 @@
+{
+  "name": "streams",
+  "version": "0.0.0",
+  "port": 3001,
+  "private": true,
+  "devDependencies": {
+    "@babel/core": "7.11.4",
+    "@babel/preset-react": "7.10.4",
+    "babel-loader": "8.1.0",
+    "css-loader": "4.2.2",
+    "file-loader": "6.1.0",
+    "html-webpack-plugin": "git://github.com/ScriptedAlchemy/html-webpack-plugin#master",
+    "mini-css-extract-plugin": "0.11.0",
+    "nodeshift": "^7.1.0",
+    "null-loader": "^4.0.0",
+    "serve": "11.3.2",
+    "webpack": "5.0.0-rc.3",
+    "webpack-cli": "3.3.12",
+    "webpack-dev-server": "3.11.0"
+  },
+  "scripts": {
+    "start": "npm run serve",
+    "build": "webpack --mode production --env.remoteSuffix=-zfe-poc.apps.ocp4.patternfly.org",
+    "clean": "rm -rf public",
+    "develop": "webpack-dev-server",
+    "serve": "node scripts/serve",
+    "nodeshift-deploy": "scripts/nodeshift.sh deploy three-scale",
+    "nodeshift-undeploy": "scripts/nodeshift.sh undeploy three-scale",
+    "deploy": "node scripts/deploy"
+  },
+  "dependencies": {
+    "@patternfly/react-core": "^4.47.0",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0",
+    "react-router-dom": "^5.1.2",
+    "serve": "11.3.2"
+  }
+}
