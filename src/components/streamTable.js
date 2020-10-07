@@ -2,6 +2,13 @@ import React from 'react';
 import {
   Button,
   ButtonVariant,
+  Drawer,
+  DrawerActions,
+  DrawerCloseButton,
+  DrawerContent,
+  DrawerContentBody,
+  DrawerPanelContent,
+  DrawerHead,
   DropdownToggleCheckbox,
   Toolbar,
   ToolbarItem,
@@ -32,18 +39,6 @@ function instancesToRows(instances) {
   ));
 }
 
-const actions = [
-  {
-    title: 'Connect to this instance'
-  },
-  {
-    title: 'View configuration'
-  },
-  {
-    title: 'Manage users'
-  }
-];
-
 export class StreamTable extends React.Component {
   constructor(props) {
     super(props);
@@ -57,6 +52,7 @@ export class StreamTable extends React.Component {
       isBulkSelectDropdownOpen: false,
       isFilterDropdownOpen: false,
       isCategoryDropdownOpen: false,
+      isDrawerExpanded: false,
       nameInput: '',
       columns: [
         { title: 'Name' },
@@ -184,6 +180,22 @@ export class StreamTable extends React.Component {
       });
       this.onFilterSelect();
     };
+
+    this.actions = [
+      {
+        title: 'Open in Jupyter',
+        onClick: () => {
+          console.log('CLICK')
+          this.setState({ isDrawerExpanded: true })
+        }
+      },
+      {
+        title: 'View configuration'
+      },
+      {
+        title: 'Manage users'
+      }
+    ];
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -368,8 +380,21 @@ export class StreamTable extends React.Component {
     );
   }
 
+  renderDrawerPanel() {
+    return (
+      <DrawerPanelContent>
+        <DrawerHead>
+          <span>drawer-panel</span>
+          <DrawerActions>
+            <DrawerCloseButton onClick={() => this.setState({ isDrawerExpanded: false })} />
+          </DrawerActions>
+        </DrawerHead>
+      </DrawerPanelContent>
+    );
+  }
+
   render() {
-    const { rows, columns, filters } = this.state;
+    const { rows, columns, filters, isDrawerExpanded } = this.state;
 
     const filteredRows =
       filters.name.length > 0 || filters.location.length > 0 || filters.status.length > 0
@@ -384,19 +409,23 @@ export class StreamTable extends React.Component {
         : rows;
 
     return (
-      <React.Fragment>
-        {this.renderToolbar()}
-        <Table
-          cells={columns}
-          rows={filteredRows}
-          onSelect={this.onRowSelect}
-          aria-label="Filterable Table Demo"
-          actions={actions}
-        >
-          <TableHeader />
-          <TableBody />
-        </Table>
-      </React.Fragment>
+      <Drawer isExpanded={isDrawerExpanded}>
+        <DrawerContent panelContent={this.renderDrawerPanel()}>
+          <DrawerContentBody>
+            {this.renderToolbar()}
+            <Table
+              cells={columns}
+              rows={filteredRows}
+              onSelect={this.onRowSelect}
+              aria-label="Filterable Table Demo"
+              actions={this.actions}
+            >
+              <TableHeader />
+              <TableBody />
+            </Table>
+          </DrawerContentBody>
+        </DrawerContent>
+      </Drawer>
     );
   }
 }
