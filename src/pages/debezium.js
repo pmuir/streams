@@ -15,7 +15,6 @@ import {
   TextContent,
   Wizard
 } from '@patternfly/react-core';
-import Notebook from 'jupyter/notebook';
 
 const wizardSteps = [
   { name: 'Select connector',
@@ -101,7 +100,6 @@ const wizardSteps = [
 const wizardTitle = 'Basic wizard';
 
 export const DebeziumPage = () => {
-  const [showJupyter, setShowJupyter] = React.useState(false);
   return (
     <React.Fragment>
       <PageSection variant={PageSectionVariants.light}>
@@ -118,10 +116,6 @@ export const DebeziumPage = () => {
           steps={wizardSteps}
           // height={400}
         />
-        <Button onClick={() => setShowJupyter(!showJupyter)}>
-          Add some jupyter down below!
-        </Button>
-        {showJupyter && <Notebook />}
       </PageSection>
     </React.Fragment>
   );

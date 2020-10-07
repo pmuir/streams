@@ -7,6 +7,7 @@ import {
   DrawerCloseButton,
   DrawerContent,
   DrawerContentBody,
+  DrawerPanelBody,
   DrawerPanelContent,
   DrawerHead,
   DropdownToggleCheckbox,
@@ -32,6 +33,7 @@ import CheckCircleIcon from '@patternfly/react-icons/dist/js/icons/check-circle-
 import ExportIcon from '@patternfly/react-icons/dist/js/icons/export-icon';
 import EllipsisVIcon from '@patternfly/react-icons/dist/js/icons/ellipsis-v-icon';
 import { Table, TableHeader, TableBody } from '@patternfly/react-table';
+import Notebook from 'jupyter/notebook';
 
 function instancesToRows(instances) {
   return instances.map(({ name, env, cloudProvider, region, preset }) => (
@@ -388,6 +390,9 @@ export class StreamTable extends React.Component {
           <DrawerActions>
             <DrawerCloseButton onClick={() => this.setState({ isDrawerExpanded: false })} />
           </DrawerActions>
+          <DrawerPanelBody hasNoPadding>
+            Here's a notebook: <Notebook />
+          </DrawerPanelBody>
         </DrawerHead>
       </DrawerPanelContent>
     );
