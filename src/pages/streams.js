@@ -1,6 +1,5 @@
-import React, {useState} from "react";
+import React from "react";
 import {
-  Button,
   EmptyState,
   EmptyStateIcon,
   EmptyStateBody,
@@ -9,26 +8,15 @@ import {
   PageSectionVariants
 } from '@patternfly/react-core';
 import StreamIcon from '@patternfly/react-icons/dist/js/icons/stream-icon';
-import { StreamWizard } from '../components/streamWizard';
 import { StreamTable } from '../components/streamTable';
+import { Link } from 'react-router-dom';
 import "../app.scss";
 
-export const StreamsPage = ({ location }) => {
-  const [instances, setInstances] = useState([]);
-  const [showWizard, setShowWizard] = useState(false);
-
-  function onCreateStream(data) {
-    setShowWizard(false);
-    if (data) {
-      console.log('stream created', data);
-      setInstances([
-        data,
-        ...instances
-      ]);
-    }
-  }
-
-  console.log('instances', instances);
+export const StreamsPage = () => {
+  // use localstorage to fake a db for now
+  let streams = localStorage.getItem('streams')
+  streams = streams ? JSON.parse(streams) : [];
+  console.log('streams', streams);
   return (
     <React.Fragment>
       <PageSection variant={PageSectionVariants.light}>
@@ -37,8 +25,7 @@ export const StreamsPage = ({ location }) => {
         </Title>
       </PageSection>
       <PageSection style={{ backgroundColor: 'var(--pf-global--BackgroundColor--light-300)' }}>
-        {showWizard && <StreamWizard onSubmit={onCreateStream} />}
-        {instances.length === 0
+        {streams.length === 0
           ? (
             <EmptyState variant="xl">
               <EmptyStateIcon icon={StreamIcon} />
@@ -48,13 +35,13 @@ export const StreamsPage = ({ location }) => {
               <EmptyStateBody>
                 Create a streams instance to get started.
               </EmptyStateBody>
-              <Button variant="primary" onClick={() => setShowWizard(true)}>
-                Create Streams instance
-              </Button>
+              <Link class="pf-c-button pf-m-primary" to="/services/debezium">
+                Add data capture
+              </Link>
             </EmptyState>
           )
           : (
-            <StreamTable instances={instances} onCreateInstance={() => setShowWizard(true)} />
+            <StreamTable instances={streams} />
           )
         }
       </PageSection>

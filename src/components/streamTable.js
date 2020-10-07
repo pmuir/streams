@@ -33,6 +33,7 @@ import CheckCircleIcon from '@patternfly/react-icons/dist/js/icons/check-circle-
 import ExportIcon from '@patternfly/react-icons/dist/js/icons/export-icon';
 import EllipsisVIcon from '@patternfly/react-icons/dist/js/icons/ellipsis-v-icon';
 import { Table, TableHeader, TableBody } from '@patternfly/react-table';
+import { Link } from 'react-router-dom';
 import Notebook from 'jupyter/notebook';
 
 function instancesToRows(instances) {
@@ -361,9 +362,9 @@ export class StreamTable extends React.Component {
             </ToolbarGroup>
           </ToolbarToggleGroup>
           <ToolbarItem>
-            <Button onClick={this.props.onCreateInstance}>
-              Create Streams instance
-            </Button>
+            <Link class="pf-c-button pf-m-primary" to="/services/debezium">
+              Add data capture
+            </Link>
           </ToolbarItem>
           <ToolbarGroup variant="icon-button-group">
             <ToolbarItem>

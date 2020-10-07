@@ -4,6 +4,8 @@ import React from "react";
 import Page from 'nav/Page';
 import routes from "nav/routes";
 
+localStorage.setItem('streams', '[]')
+
 const App = () => {
   
   console.log('routes', routes);

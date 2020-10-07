@@ -21,11 +21,13 @@ import {
   Title,
   Wizard
 } from '@patternfly/react-core';
+import { useHistory } from 'react-router-dom';
 
 export const DebeziumPage = () => {
   const [connector, setConnector] = React.useState('mysql')
   const [table, setTable] = React.useState('Select')
   const [streamName, setStreamName] = React.useState('')
+  const history = useHistory();
   
   const SelectConnector = (
     <Gallery hasGutter>
@@ -167,7 +169,22 @@ export const DebeziumPage = () => {
         <Wizard
           className='pf-m-color-scheme-light-200'
           steps={wizardSteps}
-          onSave={() => console.log()}
+          onSave={() => {
+            // use localstorage to fake a db for now
+            let streams = localStorage.getItem('streams')
+            streams = streams ? JSON.parse(streams) : [];
+            streams.push({
+              name: streamName,
+              env: 'Default',
+              cloudProvider: 'aws',
+              region: 'us-east-1',
+              preset: 'Trial',
+              // connector,
+              // table
+            })
+            localStorage.setItem('streams', JSON.stringify(streams));
+            history.push('/services/streams')
+          }}
         />
       </PageSection>
     </React.Fragment>
