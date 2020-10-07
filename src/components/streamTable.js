@@ -351,16 +351,18 @@ export class StreamTable extends React.Component {
               Create Streams instance
             </Button>
           </ToolbarItem>
-          <ToolbarItem>
-            <Button variant="plain">
-              <ExportIcon />
-            </Button>
-          </ToolbarItem>
-          <ToolbarItem>
-            <Button variant="plain">
-              <EllipsisVIcon />
-            </Button>
-          </ToolbarItem>
+          <ToolbarGroup variant="icon-button-group">
+            <ToolbarItem>
+              <Button variant="plain">
+                <ExportIcon />
+              </Button>
+            </ToolbarItem>
+            <ToolbarItem>
+              <Button variant="plain">
+                <EllipsisVIcon />
+              </Button>
+            </ToolbarItem>
+          </ToolbarGroup>
         </ToolbarContent>
       </Toolbar>
     );

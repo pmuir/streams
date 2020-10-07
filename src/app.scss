@@ -1,0 +1,23 @@
+@import "@patternfly/patternfly/sass-utilities/all.scss";
+
+.pf-c-page__sidebar {
+  // display: none;
+}
+
+.pf-c-card.pf-m-center-content {
+  .pf-c-card__header,
+  .pf-c-card__title,
+  .pf-c-card__body {
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+.pf-c-card__header,
+.pf-c-card__title,
+.pf-c-card__body {
+  &.pf-m-center-content {
+    justify-content: center;
+    text-align: center;
+  }
+}

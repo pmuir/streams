@@ -6,11 +6,12 @@ import {
   EmptyStateBody,
   Title,
   PageSection,
-  PageSectionVariants 
+  PageSectionVariants
 } from '@patternfly/react-core';
 import StreamIcon from '@patternfly/react-icons/dist/js/icons/stream-icon';
 import { StreamWizard } from '../components/streamWizard';
 import { StreamTable } from '../components/streamTable';
+import "../app.scss";
 
 export const StreamsPage = ({ location }) => {
   const [instances, setInstances] = useState([]);
