@@ -7,21 +7,44 @@ import {
   CardHeaderMain,
   CardTitle,
   Divider,
+  Form,
+  FormGroup,
+  FormSelect,
+  FormSelectOption,
   Gallery,
   GalleryItem,
   PageSection,
   PageSectionVariants,
   Text,
   TextContent,
+  TextInput,
+  Title,
   Wizard
 } from '@patternfly/react-core';
 
-const wizardSteps = [
-  { name: 'Select connector',
-    component:
+export const DebeziumPage = () => {
+  const [connector, setConnector] = React.useState('mysql')
+  const [table, setTable] = React.useState('Select')
+  const [streamName, setStreamName] = React.useState('')
+  
+  const SelectConnector = (
     <Gallery hasGutter>
       <GalleryItem>
-        <Card className="pf-m-center-content" isSelectable={true}>
+        <Card className="pf-m-center-content" isSelectable={true} onClick={() => setConnector('mysql')}>
+          <CardHeader>
+            <CardHeaderMain>
+              <img
+                src="https://d1.awsstatic.com/asset-repository/products/amazon-rds/1024px-MySQL.ff87215b43fd7292af172e2a5d9b844217262571.png"
+                alt="mysql"
+                style={{ height: '100px' }} />
+            </CardHeaderMain>
+          </CardHeader>
+          <CardTitle>MySQL</CardTitle>
+          <CardBody>Connection to MySQL</CardBody>
+        </Card>
+      </GalleryItem>
+      <GalleryItem>
+        <Card className="pf-m-center-content" isSelectable={true} onClick={() => setConnector('postgres')}>
           <CardHeader>
             <CardHeaderMain>
               <img
@@ -35,7 +58,7 @@ const wizardSteps = [
         </Card>
       </GalleryItem>
       <GalleryItem>
-        <Card className="pf-m-center-content" isSelectable={true}>
+        <Card className="pf-m-center-content" isSelectable={true} onClick={() => setConnector('mongodb')}>
           <CardHeader>
             <CardHeaderMain>
               <img
@@ -49,7 +72,7 @@ const wizardSteps = [
         </Card>
       </GalleryItem>
       <GalleryItem>
-        <Card className="pf-m-center-content" isSelectable={true}>
+        <Card className="pf-m-center-content" isSelectable={true} onClick={() => setConnector('microsoftsql')}>
           <CardHeader>
             <CardHeaderMain>
               <img
@@ -58,48 +81,80 @@ const wizardSteps = [
                 style={{ height: '100px' }} />
             </CardHeaderMain>
           </CardHeader>
-          <CardTitle>MongoDB</CardTitle>
-          <CardBody>Connection to SampleDB</CardBody>
-        </Card>
-      </GalleryItem>
-      <GalleryItem>
-        <Card className="pf-m-center-content" isSelectable={true}>
-          <CardHeader>
-            <CardHeaderMain>
-              <img
-                src="https://d1.awsstatic.com/asset-repository/products/amazon-rds/1024px-MySQL.ff87215b43fd7292af172e2a5d9b844217262571.png"
-                alt="mysql"
-                style={{ height: '100px' }} />
-            </CardHeaderMain>
-          </CardHeader>
-          <CardTitle>MongoDB</CardTitle>
+          <CardTitle>SQL Server</CardTitle>
           <CardBody>Connection to SampleDB</CardBody>
         </Card>
       </GalleryItem>
     </Gallery>
-  },
-  { name: 'Configure connection',
-    component:
-    <p>Step 2 content</p>
-  },
-  { name: 'Select tables',
-    component:
-    <p>Step 3 content</p>
-  },
-  { name: 'Data options',
-    component:
-    <p>Step 4 content</p>
-  },
-  { name: 'Runtime option',
-    component:
-    <p>Review step content</p>,
-    nextButtonText: 'Finish'
-  }
-];
+  )
 
-const wizardTitle = 'Basic wizard';
+  const SelectTables = (
+    <React.Fragment>
+      <Title size="2xl" headingLevel="h2">
+        Select table
+      </Title>
+      <Form isHorizontal>
+        <FormGroup
+          label="Table name"
+          fieldId="simple-form-name"
+        >
+          <FormSelect
+            value={table}
+            onChange={sel => setTable(sel)}
+            id="horzontal-form-title"
+            name="horizontal-form-title"
+            aria-label="Your title"
+          >
+            <FormSelectOption value="Select" label="Select" />
+            <FormSelectOption value="trades" label="trades" />
+            <FormSelectOption value="music" label="music" />
+          </FormSelect>
+        </FormGroup>
+      </Form>
+    </React.Fragment>
+  )
 
-export const DebeziumPage = () => {
+  const CreateStream = (
+    <React.Fragment>
+      <Title size="2xl" headingLevel="h2">
+        Create stream
+      </Title>
+      <Form isHorizontal>
+        <FormGroup
+          label="Stream name"
+          fieldId="simple-stream-name"
+        >
+          <TextInput
+            value={streamName}
+            onChange={val => setStreamName(val)}
+            isRequired
+            type="text"
+            id="simple-stream-name"
+            name="simple-stream-name"
+            aria-describedby="simple-form-name-helper"
+          />
+        </FormGroup>
+      </Form>
+    </React.Fragment>
+  )
+
+  const wizardSteps = [
+    { name: 'Select connector',
+      component: SelectConnector
+    },
+    { name: 'Configure connection',
+      component:
+      <p>Step 2 content</p>
+    },
+    { name: 'Select tables',
+      component: SelectTables
+    },
+    { name: 'Create stream',
+      component: CreateStream,
+      nextButtonText: 'Finish'
+    },
+  ];
+
   return (
     <React.Fragment>
       <PageSection variant={PageSectionVariants.light}>
@@ -111,10 +166,8 @@ export const DebeziumPage = () => {
       <PageSection padding={{md: 'noPadding'}}>
         <Wizard
           className='pf-m-color-scheme-light-200'
-          navAriaLabel={`${wizardTitle} steps`}
-          mainAriaLabel={`${wizardTitle} content`}
           steps={wizardSteps}
-          // height={400}
+          onSave={() => console.log()}
         />
       </PageSection>
     </React.Fragment>
