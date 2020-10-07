@@ -21,3 +21,9 @@
     text-align: center;
   }
 }
+
+.pf-c-wizard {
+  &.pf-m-color-scheme-light-200 {
+    --pf-c-wizard__outer-wrap--BackgroundColor: var(--pf-global--BackgroundColor--200);
+  }
+}
