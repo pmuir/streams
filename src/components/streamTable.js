@@ -385,14 +385,14 @@ export class StreamTable extends React.Component {
 
   renderDrawerPanel() {
     return (
-      <DrawerPanelContent>
+      <DrawerPanelContent widths={{ default: 'width_50' }}>
         <DrawerHead>
-          <span>drawer-panel</span>
+          <span>Notebook Quick View</span>
           <DrawerActions>
             <DrawerCloseButton onClick={() => this.setState({ isDrawerExpanded: false })} />
           </DrawerActions>
           <DrawerPanelBody hasNoPadding>
-            Here's a notebook: <Notebook />
+            <Notebook />
           </DrawerPanelBody>
         </DrawerHead>
       </DrawerPanelContent>
