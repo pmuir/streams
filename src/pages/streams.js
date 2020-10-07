@@ -19,12 +19,12 @@ export const StreamsPage = () => {
   console.log('streams', streams);
   return (
     <React.Fragment>
-      <PageSection variant={PageSectionVariants.light}>
+      <PageSection variant={PageSectionVariants.light} isWidthLimited>
         <Title headingLevel="h1" size="2xl">
           Openshift streams
         </Title>
       </PageSection>
-      <PageSection style={{ backgroundColor: 'var(--pf-global--BackgroundColor--light-300)' }}>
+      <PageSection style={{ backgroundColor: 'var(--pf-global--BackgroundColor--light-300)' }} isWidthLimited>
         {streams.length === 0
           ? (
             <EmptyState variant="xl">

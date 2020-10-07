@@ -385,7 +385,7 @@ export class StreamTable extends React.Component {
 
   renderDrawerPanel() {
     return (
-      <DrawerPanelContent widths={{ default: 'width_50' }}>
+      <DrawerPanelContent widths={{ default: 'width_50', lg: 'width_33', '2xl': 'width_25' }}>
         <DrawerHead>
           <span>Notebook Quick View</span>
           <DrawerActions>
@@ -415,7 +415,7 @@ export class StreamTable extends React.Component {
         : rows;
 
     return (
-      <Drawer isExpanded={isDrawerExpanded}>
+      <Drawer className="pf-m-inline-on-2xl" isExpanded={isDrawerExpanded}>
         <DrawerContent panelContent={this.renderDrawerPanel()}>
           <DrawerContentBody>
             {this.renderToolbar()}
