@@ -6,9 +6,13 @@ import {
   Text,
   TextContent
 } from '@patternfly/react-core';
-import DebeziumWizard from 'jupyter/debeziumWizard';
+import DebeziumTable from 'jupyter/debeziumTable';
 
 export const DebeziumPage = () => {
+  let dataCaptures = localStorage.getItem('dataCaptures')
+  dataCaptures = dataCaptures ? JSON.parse(dataCaptures) : [];
+  console.log('dataCaptures', dataCaptures);
+  
   return (
     <React.Fragment>
       <PageSection variant={PageSectionVariants.light}>
@@ -18,7 +22,7 @@ export const DebeziumPage = () => {
       </PageSection>
       <Divider />
       <PageSection padding={{ md: 'noPadding' }}>
-        <DebeziumWizard />
+        <DebeziumTable />
       </PageSection>
     </React.Fragment>
   );
