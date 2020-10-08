@@ -388,7 +388,7 @@ export class StreamTable extends React.Component {
 
   renderDrawerPanel() {
     return (
-      <DrawerPanelContent widths={{ default: 'width_50' }}>
+      <DrawerPanelContent widths={{ default: 'width_75', '2xl': 'width_50'}}>
         <DrawerHead>
           <Flex>
             <Title headingLevel="h3" size={TitleSizes['xl']}>
