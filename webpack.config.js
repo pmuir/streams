@@ -29,6 +29,7 @@ module.exports = (env = { navPort: 3000, jupyterPort: 3002 }, argv) => {
       port
     },
     output: {
+      path: path.resolve('public'),
       publicPath
     },
     module: {
