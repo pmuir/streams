@@ -25,7 +25,6 @@ import {
   Title,
   TitleSizes,
   TextInput,
-  Title,
   Select,
   SelectOption,
   SelectVariant,
