@@ -46,6 +46,10 @@
   min-height: #{pf-size-prem(32px)};
 }
 
+.pf-c-divider {
+  flex: none;
+}
+
 .app-c-selectable-card {
   --pf-c-card--child--PaddingBottom: var(--pf-global--spacer--xl);
 
