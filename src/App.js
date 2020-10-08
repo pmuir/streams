@@ -22,23 +22,23 @@ localStorage.setItem('dataCaptures', `[{
 }]`)
 
 const App = () => {
-  
   console.log('routes', routes);
 
   return (
     <HashRouter>
-      <Page>
-        <Switch>
-          {routes.map(({ path, component: Component, exact }) => (
-            <Route
-              key={path}
-              path={path}
-              component={Component}
-              exact={exact}
-            />
-          ))}
-        </Switch>
-      </Page>
+      <Switch>
+        {routes.map(({ path, component: Component, exact }) => (
+          <Route
+            key={path}
+            path={path}
+            component={path === "/"
+              ? Component // Don't chrome the dashboard page (which is a CRC clone)
+              : props => <Page><Component {...props} /></Page>
+            }
+            exact={exact}
+          />
+        ))}
+      </Switch>
     </HashRouter>
   );
 }
