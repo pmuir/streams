@@ -7,7 +7,7 @@ import {
   Text,
   TextContent
 } from '@patternfly/react-core';
-import DebeziumTable from 'jupyter/debeziumTable';
+import DebeziumTable from 'debezium/debeziumTable';
 
 export const DebeziumPage = () => {
   let dataCaptures = localStorage.getItem('dataCaptures')

@@ -8,7 +8,7 @@ delete dependencies.serve; // Needed for nodeshift bug
 // Don't include PatternFly styles twice
 const reactCSSRegex = /(react-[\w-]+\/public|react-styles\/css)\/.*\.css$/;
 
-module.exports = (env = { navPort: 3000, jupyterPort: 3002 }, argv) => {
+module.exports = (env = { navPort: 3000, jupyterPort: 3002, debeziumPort: 3003 }, argv) => {
   const isProd = argv.mode === 'production';
   const { remoteSuffix } = env;
   const publicPath = (isProd && remoteSuffix)
@@ -20,6 +20,9 @@ module.exports = (env = { navPort: 3000, jupyterPort: 3002 }, argv) => {
   const navPath = (isProd && remoteSuffix)
     ? `http://nav${remoteSuffix}/`
     : `http://localhost:${env.navPort}/`;
+  const debeziumPath = (isProd && remoteSuffix)
+    ? `http://debezium${remoteSuffix}/`
+    : `http://localhost:${env.debeziumPort}/`;
 
   return {
     entry: "./src/index",
@@ -72,6 +75,7 @@ module.exports = (env = { navPort: 3000, jupyterPort: 3002 }, argv) => {
         remotes: {
           jupyter: `jupyter@${jupyterPath}remoteEntry.js`,
           nav: `nav@${navPath}remoteEntry.js`,
+          debezium: `debezium@${debeziumPath}remoteEntry.js`,
         },
         exposes: {
           "./pages": "./src/pages",
