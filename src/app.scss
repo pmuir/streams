@@ -1,7 +1,41 @@
 @import "@patternfly/patternfly/sass-utilities/all.scss";
 
-.pf-c-page__sidebar {
-  // display: none;
+.pf-c-page__sidebar:not(.pf-m-expanded) ~ .pf-c-page__main .pf-c-page__main-section .pf-c-drawer {
+  @media screen and (min-width: 2000px) {
+
+    > .pf-c-drawer__main > .pf-c-drawer__content {
+      flex-shrink: 1;
+    }
+
+    > .pf-c-drawer__main > .pf-c-drawer__panel {
+      --pf-c-drawer--m-expanded__panel--BoxShadow: none;
+
+      &:not(.pf-m-no-border)::after {
+        background-color: var(--pf-c-drawer--m-inline--m-expanded__panel--after--BackgroundColor);
+      }
+    }
+
+    > .pf-c-drawer__main > .pf-c-drawer__content {
+      overflow-x: auto;
+    }
+
+    > .pf-c-drawer__main > .pf-c-drawer__panel {
+      margin-left: calc(var(--pf-c-drawer__panel--FlexBasis) * -1);
+      transform: translateX(100%);
+    }
+
+    // stylelint-disable selector-max-class, selector-max-combinators, selector-max-compound-selectors
+    // Inline, expanded
+    &.pf-m-expanded > .pf-c-drawer__main > .pf-c-drawer__panel {
+      margin-left: 0;
+      transform: translateX(0);
+    }
+
+    > .pf-c-drawer__main > .pf-c-drawer__panel > .pf-c-drawer__body > .pf-c-drawer__head .pf-c-drawer__close {
+      display: unset;
+      visibility: visible;
+    }
+  }
 }
 
 .pf-c-page__main-section {

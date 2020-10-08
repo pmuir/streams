@@ -11,6 +11,7 @@ import {
   DrawerPanelContent,
   DrawerHead,
   DropdownToggleCheckbox,
+  Flex,
   Toolbar,
   ToolbarItem,
   ToolbarContent,
@@ -389,13 +390,16 @@ export class StreamTable extends React.Component {
     return (
       <DrawerPanelContent widths={{ default: 'width_50' }}>
         <DrawerHead>
-          <Title headingLevel="h3" size={TitleSizes['xl']}>
-            Notebook quick view
+          <Flex>
+            <Title headingLevel="h3" size={TitleSizes['xl']}>
+              Notebook quick view
+            </Title>
+
             {' '}
             <a target="_blank" href="http://jupyterlab-sample-ums-poc.apps.uxd1.patternfly.org/lab?token=b276d53e3dd950d871dfcdadac149c9a2cdd1b5b37b40820">
               <ExternalLinkIcon />
             </a>
-          </Title>
+          </Flex>
           <DrawerActions>
             <DrawerCloseButton onClick={() => this.setState({ isDrawerExpanded: false })} />
           </DrawerActions>

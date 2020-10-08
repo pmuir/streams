@@ -3,6 +3,7 @@ import {
   EmptyState,
   EmptyStateIcon,
   EmptyStateBody,
+  Divider,
   Title,
   PageSection,
   PageSectionVariants
@@ -23,6 +24,7 @@ export const StreamsPage = () => {
           Openshift streams
         </Title>
       </PageSection>
+      <Divider />
       <PageSection style={{ backgroundColor: 'var(--pf-global--BackgroundColor--light-300)' }}>
         {streams.length === 0
           ? (
