@@ -24,7 +24,7 @@ export const StreamsPage = () => {
           Openshift streams
         </Title>
       </PageSection>
-      <PageSection style={{ backgroundColor: 'var(--pf-global--BackgroundColor--light-300)' }} isWidthLimited>
+      <PageSection style={{ backgroundColor: 'var(--pf-global--BackgroundColor--light-300)' }}>
         {streams.length === 0
           ? (
             <EmptyState variant="xl">

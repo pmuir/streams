@@ -22,6 +22,8 @@ import {
   DropdownPosition,
   DropdownToggle,
   InputGroup,
+  Title,
+  TitleSizes,
   TextInput,
   Title,
   Select,
@@ -389,7 +391,7 @@ export class StreamTable extends React.Component {
     return (
       <DrawerPanelContent widths={{ default: 'width_50' }}>
         <DrawerHead>
-          <Title headingLevel="h2" size="xl">
+          <Title headingLevel="h3" size={TitleSizes['xl']}>
             Notebook quick view
             {' '}
             <a target="_blank" href="http://jupyterlab-sample-ums-poc.apps.uxd1.patternfly.org/lab?token=b276d53e3dd950d871dfcdadac149c9a2cdd1b5b37b40820">
@@ -398,12 +400,11 @@ export class StreamTable extends React.Component {
           </Title>
           <DrawerActions>
             <DrawerCloseButton onClick={() => this.setState({ isDrawerExpanded: false })} />
-
           </DrawerActions>
-          <DrawerPanelBody hasNoPadding>
-            <Notebook />
-          </DrawerPanelBody>
         </DrawerHead>
+        <DrawerPanelBody>
+          <Notebook />
+        </DrawerPanelBody>
       </DrawerPanelContent>
     );
   }
@@ -424,7 +425,7 @@ export class StreamTable extends React.Component {
         : rows;
 
     return (
-      <Drawer className="pf-m-inline-on-2xl" isExpanded={isDrawerExpanded}>
+      <Drawer className="pf-m-inline-on-2xls" isExpanded={isDrawerExpanded}>
         <DrawerContent panelContent={this.renderDrawerPanel()}>
           <DrawerContentBody>
             {this.renderToolbar()}
