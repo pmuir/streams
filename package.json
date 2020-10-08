@@ -22,7 +22,7 @@
   },
   "scripts": {
     "start": "npm run serve",
-    "build": "webpack --mode production",
+    "build": "webpack --mode production --env.remoteSuffix=-ums-poc.apps.uxd1.patternfly.org",
     "clean": "rm -rf public",
     "develop": "webpack-dev-server",
     "serve": "node scripts/serve",
