@@ -4,6 +4,15 @@
   // display: none;
 }
 
+.pf-c-page__main-section {
+
+  &.pf-m-center-vertically,
+  .pf-c-page__main-body {
+    display: flex;
+    align-items: center;
+  }
+}
+
 .pf-c-card.pf-m-center-content {
   .pf-c-card__header,
   .pf-c-card__title,
