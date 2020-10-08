@@ -36,7 +36,6 @@ import ExportIcon from '@patternfly/react-icons/dist/js/icons/export-icon';
 import EllipsisVIcon from '@patternfly/react-icons/dist/js/icons/ellipsis-v-icon';
 import ExternalLinkIcon from '@patternfly/react-icons/dist/js/icons/external-link-alt-icon'
 import { Table, TableHeader, TableBody } from '@patternfly/react-table';
-import { Link } from 'react-router-dom';
 import Notebook from 'jupyter/notebook';
 
 function instancesToRows(instances) {
@@ -365,9 +364,9 @@ export class StreamTable extends React.Component {
             </ToolbarGroup>
           </ToolbarToggleGroup>
           <ToolbarItem>
-            <Link className="pf-c-button pf-m-primary">
+            <Button variant="primary">
               Create stream
-            </Link>
+            </Button>
           </ToolbarItem>
           <ToolbarGroup variant="icon-button-group">
             <ToolbarItem>

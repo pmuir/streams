@@ -17,11 +17,13 @@ export const DebeziumPage = () => {
     <React.Fragment>
       <PageSection variant={PageSectionVariants.light}>
         <TextContent>
-          <Text component="h1">Configure a connector</Text>
+          <Text component="h1">
+            Change data capture
+          </Text>
         </TextContent>
       </PageSection>
       <Divider />
-      <PageSection padding={{ md: 'noPadding' }}>
+      <PageSection style={{ backgroundColor: 'var(--pf-global--BackgroundColor--light-300)' }}>
         <DebeziumTable />
       </PageSection>
     </React.Fragment>

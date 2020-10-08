@@ -9,7 +9,6 @@ import {
 } from '@patternfly/react-core';
 import StreamIcon from '@patternfly/react-icons/dist/js/icons/stream-icon';
 import { StreamTable } from '../components/streamTable';
-import { Link } from 'react-router-dom';
 import "../app.scss";
 
 export const StreamsPage = () => {
@@ -35,9 +34,9 @@ export const StreamsPage = () => {
               <EmptyStateBody>
                 Create a streams instance to get started.
               </EmptyStateBody>
-              <Link className="pf-c-button pf-m-primary">
+              <Button variant="primary">
                 Create stream
-              </Link>
+              </Button>
             </EmptyState>
           )
           : (
