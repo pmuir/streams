@@ -4,7 +4,13 @@ import React from "react";
 import Page from 'nav/Page';
 import routes from "nav/routes";
 
-localStorage.setItem('streams', '[]')
+localStorage.setItem('streams', `[{
+  "name": "Default stream",
+  "env": "Default",
+  "cloudProvider": "aws",
+  "region": "us-east-1",
+  "preset": "Trial"
+}]`)
 
 const App = () => {
   

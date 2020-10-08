@@ -23,6 +23,7 @@ import {
   DropdownToggle,
   InputGroup,
   TextInput,
+  Title,
   Select,
   SelectOption,
   SelectVariant,
@@ -32,6 +33,7 @@ import FilterIcon from '@patternfly/react-icons/dist/js/icons/filter-icon';
 import CheckCircleIcon from '@patternfly/react-icons/dist/js/icons/check-circle-icon';
 import ExportIcon from '@patternfly/react-icons/dist/js/icons/export-icon';
 import EllipsisVIcon from '@patternfly/react-icons/dist/js/icons/ellipsis-v-icon';
+import ExternalLinkIcon from '@patternfly/react-icons/dist/js/icons/external-link-alt-icon'
 import { Table, TableHeader, TableBody } from '@patternfly/react-table';
 import { Link } from 'react-router-dom';
 import Notebook from 'jupyter/notebook';
@@ -362,8 +364,8 @@ export class StreamTable extends React.Component {
             </ToolbarGroup>
           </ToolbarToggleGroup>
           <ToolbarItem>
-            <Link class="pf-c-button pf-m-primary" to="/services/debezium">
-              Add data capture
+            <Link className="pf-c-button pf-m-primary">
+              Create stream
             </Link>
           </ToolbarItem>
           <ToolbarGroup variant="icon-button-group">
@@ -385,11 +387,18 @@ export class StreamTable extends React.Component {
 
   renderDrawerPanel() {
     return (
-      <DrawerPanelContent widths={{ default: 'width_50', lg: 'width_33', '2xl': 'width_25' }}>
+      <DrawerPanelContent widths={{ default: 'width_50' }}>
         <DrawerHead>
-          <span>Notebook Quick View</span>
+          <Title headingLevel="h2" size="xl">
+            Notebook quick view
+            {' '}
+            <a target="_blank" href="http://jupyterlab-sample-ums-poc.apps.uxd1.patternfly.org/lab?token=b276d53e3dd950d871dfcdadac149c9a2cdd1b5b37b40820">
+              <ExternalLinkIcon />
+            </a>
+          </Title>
           <DrawerActions>
             <DrawerCloseButton onClick={() => this.setState({ isDrawerExpanded: false })} />
+
           </DrawerActions>
           <DrawerPanelBody hasNoPadding>
             <Notebook />

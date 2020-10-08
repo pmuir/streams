@@ -35,8 +35,8 @@ export const StreamsPage = () => {
               <EmptyStateBody>
                 Create a streams instance to get started.
               </EmptyStateBody>
-              <Link class="pf-c-button pf-m-primary" to="/services/debezium">
-                Add data capture
+              <Link className="pf-c-button pf-m-primary">
+                Create stream
               </Link>
             </EmptyState>
           )
