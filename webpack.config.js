@@ -8,7 +8,7 @@ delete dependencies.serve; // Needed for nodeshift bug
 // Don't include PatternFly styles twice
 const reactCSSRegex = /(react-[\w-]+\/public|react-styles\/css)\/.*\.css$/;
 
-module.exports = (env = { navPort: 3000, jupyterPort: 3002, debeziumPort: 3003 }, argv) => {
+module.exports = (env = { navPort: 3000, jupyterPort: 3002, debeziumPort: 3003, debeziumUiPocPort: 8888 }, argv) => {
   const isProd = argv.mode === 'production';
   const { remoteSuffix } = env;
   const publicPath = (isProd && remoteSuffix)
@@ -23,6 +23,10 @@ module.exports = (env = { navPort: 3000, jupyterPort: 3002, debeziumPort: 3003 }
   const debeziumPath = (isProd && remoteSuffix)
     ? `http://debezium${remoteSuffix}/`
     : `http://localhost:${env.debeziumPort}/`;
+
+  const debeziumUiPocPath = (isProd && remoteSuffix)
+      ? `http://debeziumUiPoc${remoteSuffix}/`
+      : `http://localhost:${env.debeziumUiPocPort}/`;
 
   return {
     entry: "./src/index",
@@ -76,6 +80,7 @@ module.exports = (env = { navPort: 3000, jupyterPort: 3002, debeziumPort: 3003 }
           jupyter: `jupyter@${jupyterPath}remoteEntry.js`,
           nav: `nav@${navPath}remoteEntry.js`,
           debezium: `debezium@${debeziumPath}remoteEntry.js`,
+          debeziumuipoc: `debeziumuipoc@${debeziumUiPocPath}remoteEntry.js`
         },
         exposes: {
           "./pages": "./src/pages",
